@@ -1,0 +1,20 @@
+<section class="container">
+  <section class="row">
+    <div class="col-md-4 bg-light border">
+      <div class="card">
+        <div class="card-header">
+          Simple
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            SBIMF
+          </p>
+          <div class="mb-2" #chartRpt>
+            <canvas basechart [chartType]="'bar'" [datasets]="chartData" [labels]="chartLabels" [legend]="true"
+              [options]="baseOpt"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
