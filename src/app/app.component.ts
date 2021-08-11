@@ -1,90 +1,39 @@
-import { Component, ViewChild } from "@angular/core";
-import { Chart } from "chart.js";
+import { Component, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  chartData: any[] = [];
-  entityData = [
+  chartData: any[] = [
     {
-      entityId: 1,
-      entityName: "Microsoft",
-      buyerdata: [
-        {
-          buyername: "Standad Charter",
-          totalLimit: 20,
-          availablelimit: 10,
-          utilisedlimit: 8
-        },
-        {
-          buyername: "DBS",
-          totalLimit: 20,
-          availablelimit: 15,
-          utilisedlimit: 9
-        },
-        {
-          buyername: "BNP paribas",
-          totalLimit: 20,
-          availablelimit: 19,
-          utilisedlimit: 7
-        }
-      ]
+      locationName: 'Uttar Pradesh',
+      sbimf1Val: 52.69,
+      sbimf2Val: 84.16,
+      sbimf3Val: 25.36,
+      ms1Val: 25.86,
+      ms2Val: 48.24,
+      ms3Val: 12.58
     },
     {
-      entityId: 2,
-      entityName: "IBM",
-      buyerdata: [
-        {
-          buyername: "Standad Charter",
-          totalLimit: 20,
-          availablelimit: 19,
-          utilisedlimit: 18
-        },
-        {
-          buyername: "DBS",
-          totalLimit: 20,
-          availablelimit: 18,
-          utilisedlimit: 16
-        }
-      ]
+      locationName: 'Rajasthan',
+      sbimf1Val: 25.86,
+      sbimf2Val: 48.25,
+      sbimf3Val: 12.58,
+      ms1Val: 52.96,
+      ms2Val: 84.16,
+      ms3Val: 25.36
+    },
+    {
+      locationName: 'Karnataka',
+      sbimf1Val: 52.69,
+      sbimf2Val: 84.16,
+      sbimf3Val: 25.36,
+      ms1Val: 52.96,
+      ms2Val: 84.45,
+      ms3Val: 25.0
     }
   ];
-
-  chooseEntity(add, value, entity) {
-    if (add) {
-      console.log(value, entity);
-      let tempchartData = {
-        utilisedlimitData: [],
-        availablelimit: [],
-        buyernames: []
-      };
-      tempchartData["utilisedlimitData"] = [];
-      let selectedentitydata = this.entityData.find(
-        entity => entity.entityId === value
-      );
-      console.log(selectedentitydata, "selectedentitydata");
-      tempchartData["enity"] = selectedentitydata;
-      selectedentitydata.buyerdata.forEach(buyer => {
-        tempchartData["utilisedlimitData"].push(buyer.utilisedlimit);
-        tempchartData["availablelimit"].push(buyer.availablelimit);
-        tempchartData["buyernames"].push(buyer.buyername);
-      });
-      this.chartData.push(tempchartData);
-      console.log(
-        tempchartData,
-        " this.chartData this.chartData this.chartData this.chartData",
-        this.chartData
-      );
-    } else {
-      const index = this.chartData.findIndex(d => d.enity.entityId === value);
-      if (index >= 0) {
-        const newData = [...this.chartData];
-        newData.splice(index, 1);
-        this.chartData = newData;
-      }
-    }
-  }
 }
